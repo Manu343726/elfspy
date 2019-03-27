@@ -20,5 +20,8 @@ class ElfSpyConan(ConanFile):
 
     def package(self):
         self.copy('*.h')
-        self.copy('*.a', dst='lib/')
-        self.copy('*.so', dst='lib/')
+        self.copy('*.a', src='src', dst='lib/', keep_path=False)
+        self.copy('*.so', src='src', dst='lib/', keep_path=False)
+
+    def package_info(self):
+        self.cpp_info.libs = ['elfspy']
